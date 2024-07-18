@@ -1,5 +1,6 @@
 import { Todo } from "@/app/data/todo";
 import { useState } from "react";
+import { TodoView } from "./todo-item.view";
 
 
 interface Props {
@@ -8,12 +9,22 @@ interface Props {
 }
 
 
-export const TodoItemContainer = (props: Props) => { 
+export const TodoItemContainer = ({todo, setTodos} : Props) => { 
     const [errorComplete , setErrorComplete] = useState<string>('');
     const [errorRemove , setErrorRemove] = useState<string>(''); 
 
 
-    const _completeTodo = async (todo: Todo) => {}
+    const _completeTodo = async () => {}
 
     const _removeTodo = async (todo: Todo) => {}
+
+    return (
+        <TodoView 
+            todo={todo}
+            errorComplete={errorComplete}
+            errorRemove={errorRemove}
+            removeTodo={_removeTodo} 
+            completeTodo={_completeTodo}
+            />
+    )
 }

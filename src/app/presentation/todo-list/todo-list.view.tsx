@@ -1,4 +1,5 @@
-import { Todo } from "../data/todo";
+import { Todo } from "../../data/todo";
+import { TodoItemContainer } from "../todo-item/todo-item.container";
 import styles from "./todo-list.module.scss"
 import { Error } from "@/components/error/error"
 
@@ -8,16 +9,16 @@ interface Props {
     setTodos: (todos: Todo[]) => void;
 }
 
-export const TodosListContainer = (props: Props) => {
+export const TodoListView = ({todos, error, setTodos}: Props) => {
 return (
     <>
         <h1 className={styles.title}>Todos</h1>
         {/* <AddTodoFormContainer setTodos={setTodos} /> */}
 
-			<Error error={props.error} />
+			<Error error={error} />
 
 			<ul className={styles.container}>
-				{props.todos.map((todo: Todo) => (
+				{todos.map((todo: Todo) => (
 					<TodoItemContainer
 						key={todo.title}
 						todo={todo}
